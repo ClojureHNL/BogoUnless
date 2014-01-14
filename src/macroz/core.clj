@@ -18,9 +18,9 @@
 (defmacro unless2 [pred x]
   `(if ~pred nil ~x))
 
-(defmacro bogounless [pred x kick]
+(defmacro bogounless [pred x]
   `(loop [cnt# 1]
-     (println "kick - count: " ~kick " - " cnt# )
+     (println "count: " cnt# )
      (let [rand-bool# (< 0 (rand-int 2))
            _# (println "rand-bool: " rand-bool#)]
        (if (= cnt# 5)
