@@ -21,10 +21,12 @@
 (defmacro bogounless [pred x]
   `(loop [cnt# 1]
      (println "count: " cnt# )
-     (let [rand-bool# (< 0 (rand-int 2))
-           _# (println "rand-bool: " rand-bool#)]
-       (if (= cnt# 5)
-         nil
+     (if (= cnt# 5)
+       (do
+         (println "short-circuit!")
+         nil)
+       (let [rand-bool# (< 0 (rand-int 2))
+             _# (println "rand-bool: " rand-bool#)]
          (if (= rand-bool# ~pred)
            (recur (inc cnt#))
            ~x)))))
